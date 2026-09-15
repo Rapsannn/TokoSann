@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:mysample/pages/login_screen.dart';
+import 'package:mysample/pages/register_screen.dart';
 
 import 'pages/feeds_screen.dart';
 import 'pages/home_screen.dart';
@@ -16,7 +18,15 @@ class NavigationBarApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(home: NavigationExample());
+    return MaterialApp(
+      initialRoute: '/login',
+
+      routes: {
+        '/login': (context) => const LoginScreen(),
+        '/register': (context) => const RegisterScreen(),
+        '/home': (context) => const NavigationExample(),
+      },
+    );
   }
 }
 
