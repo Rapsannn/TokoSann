@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../main.dart';
 import 'register_screen.dart';
 
 // ===============================
@@ -38,7 +39,6 @@ class _LoginScreenState extends State<LoginScreen> {
     if (username == 'admin' && password == '12345') {
       Navigator.pushReplacementNamed(context, '/home');
     } else {
-      // Jika salah, tampilkan pesan
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Username atau password salah!')),
       );

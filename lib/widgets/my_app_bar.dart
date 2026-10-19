@@ -1,66 +1,70 @@
 import 'package:flutter/material.dart';
+import 'package:mysample/pages/cart_page.dart';
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   const MyAppBar({super.key});
 
   @override
-  Size get preferredSize => const Size.fromHeight(70);
-
-  @override
   Widget build(BuildContext context) {
     return AppBar(
-      automaticallyImplyLeading: false,
+      backgroundColor: Colors.white,
       elevation: 0,
-      surfaceTintColor: Colors.transparent,
 
       titleSpacing: 16,
 
       title: Row(
         children: [
-          // =====================
+          // =========================
           // SEARCH BAR
-          // =====================
+          // =========================
           Expanded(
-            child: Container(
-              height: 45,
-              decoration: BoxDecoration(
-                color: Colors.grey.shade100,
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: TextField(
-                decoration: InputDecoration(
-                  hintText: 'Cari produk...',
-                  prefixIcon: const Icon(Icons.search, size: 22),
-                  border: InputBorder.none,
-                  contentPadding: const EdgeInsets.symmetric(vertical: 12),
+            child: TextField(
+              decoration: InputDecoration(
+                hintText: 'Cari produk...',
+                prefixIcon: const Icon(Icons.search, size: 22),
+
+                filled: true,
+                fillColor: Colors.grey.shade100,
+
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(16),
+                  borderSide: BorderSide.none,
                 ),
+
+                contentPadding: const EdgeInsets.symmetric(vertical: 12),
               ),
             ),
           ),
 
           const SizedBox(width: 8),
 
-          // =====================
-          // ICON CHAT
-          // =====================
+          // =========================
+          // CHAT
+          // =========================
           IconButton(
             onPressed: () {
-              // Aksi chat
+              // nanti bisa diarahkan ke halaman chat
             },
-            icon: const Icon(Icons.chat_bubble_outline),
+            icon: const Icon(Icons.chat_bubble_outline, color: Colors.black),
           ),
 
-          // =====================
-          // ICON KERANJANG
-          // =====================
+          // =========================
+          // KERANJANG
+          // =========================
           IconButton(
             onPressed: () {
-              // Aksi keranjang
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const CartPage()),
+              );
             },
-            icon: const Icon(Icons.shopping_cart_outlined),
+            icon: const Icon(Icons.shopping_cart_outlined, color: Colors.black),
           ),
         ],
       ),
     );
   }
+
+  @override
+  Size get preferredSize => const Size.fromHeight(80);
 }
